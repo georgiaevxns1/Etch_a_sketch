@@ -1,4 +1,10 @@
 const grid = document.querySelector('.grid');
+function randomColor() {
+    let color = '#';
+    let letters = ['8a3bbd','d61f99','fa052c','17f7f2','f0f925', '25fa30'];
+    color += letters [Math.floor(Math.random() * letters.length)];
+    return color;
+}
 
 
 for (let i = 1; i <=256; i++) {
@@ -7,7 +13,7 @@ for (let i = 1; i <=256; i++) {
     gridSquare.style.width = (grid.clientWidth / 16) - 2 + 'px';
     gridSquare.style.height = (grid.clientWidth / 16) -2 + 'px';
     gridSquare.addEventListener('mouseover', function() {
-        gridSquare.style.backgroundColor = 'lightBlue';
+        gridSquare.style.backgroundColor = randomColor();
     });
     grid.appendChild(gridSquare);
 }
@@ -15,9 +21,12 @@ for (let i = 1; i <=256; i++) {
 const form = document.querySelector(".form");
 const input = document.querySelector(".input");
 
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const gridSize = input.valueAsNumber;
+
+
     if (Number.isNaN(gridSize) || gridSize > 100) {
         return;
     } else {
@@ -29,12 +38,14 @@ form.addEventListener("submit", (e) => {
             customGrid.style.width = (grid.clientWidth / gridSize) - 2 + 'px';
             customGrid.style.height = (grid.clientWidth / gridSize) - 2 + 'px';
             customGrid.addEventListener('mouseover', function () {
-                customGrid.style.backgroundColor = 'lightBlue';
+                customGrid.style.backgroundColor = randomColor();
         });
         grid.appendChild(customGrid);
        } 
     }
 });
+
+
     
 
     
